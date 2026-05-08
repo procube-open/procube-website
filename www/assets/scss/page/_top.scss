@@ -1,0 +1,356 @@
+@use "../global/" as g;
+
+.p- {
+  &top {
+    $top: &;
+
+    // Mv
+    &Mv {
+      position: relative;
+      background: g.$white;
+
+      &Front {
+        position: relative;
+        height: max(810px, 100dvh);
+        background: transparent;
+        z-index: 2;
+        @include g.media(tab) {
+          height: max(calc(375px * 2), 100dvh);
+        }
+        @include g.media(sp) {
+          height: g.auto-value(375, 667, "vw");
+        }
+        &__inner {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          padding: 0 g.$space-pc;
+          @include g.position-center-y;
+          @include g.media(tab) {
+            padding: 0 g.$space-sp;
+          }
+        }
+        &__title {
+          &Img {
+            display: block;
+            width: min(660px, g.auto-value(1440, 660, "vw"));
+            margin: 0 auto;
+            @include g.media(sp) {
+              width: min(calc(250px * 2), g.auto-value(calc(375px * 2), calc(250px * 2), "vw"));
+            }
+          }
+        }
+      }
+
+      &Bottom {
+        position: relative;
+        padding: 120px 0;
+        background:  url(/assets/img/top/bg_cube01.svg) no-repeat right min(70px, g.auto-value(1440, 70, "vw")) top min(70px, g.auto-value(1440, 70, "vw"))/min(351px, g.auto-value(1440, 351, "vw")) auto, rgba(#041D3F, 0.6);
+        backdrop-filter: blur(6px);
+        z-index: 2;
+        @include g.media(tab) {
+          padding: 100px 0;
+          background:  url(/assets/img/top/bg_cube01_sp.svg) no-repeat right -58px top 40px/351px auto, rgba(#041D3F, 0.6);
+        }
+        &__inner {
+          @include g.inner02-type01;
+        }
+        &__read {
+          font-size: 2.8rem;
+          color: g.$white;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.7;
+          letter-spacing: g.text-spacing(4);
+          margin-bottom: 24px;
+          @include g.media(tab) {
+            font-size: 2.2rem;
+          }
+        }
+        &__text {
+          font-size: 1.6rem;
+          color: g.$white;
+          font-weight: g.$font-family-noto-sans-jp-regular;
+          line-height: 1.8;
+          letter-spacing: g.text-spacing(2);
+          @include g.media(tab) {
+            font-size: 1.5rem;
+          }
+        }
+        &__btn {
+          margin-top: 50px;
+          @include g.media(tab) {
+            margin-top: 60px;
+          }
+        }
+
+        &Catch {
+          margin-bottom: 50px;
+          @include g.media(tab) {
+            margin-bottom: 32px;
+          }
+          &__main {
+            display: block;
+            line-height: 1.3;
+            letter-spacing: g.text-spacing(2);
+            &Accent01 {
+              font-size: 7.0rem;
+              color: g.$cyan;
+              font-family: g.$font-family-inter;
+              font-weight: g.$font-family-inter-bold;
+              @include g.media(tab) {
+                font-size: 4.4rem;
+              }
+            }
+            &Accent02 {
+              font-size: 5.0rem;
+              color: g.$white;
+              font-family: g.$font-family-orbitron;
+              font-weight: g.$font-family-orbitron-regular;
+              @include g.media(tab) {
+                font-size: 4.0rem;
+              }
+            }
+          }
+          &__sub {
+            display: block;
+            margin-top: 8px;
+            &Text {
+              display: inline-block;
+              font-size: 1.8rem;
+              color: g.$white;
+              font-weight: g.$font-family-noto-sans-jp-bold;
+              line-height: 1.7;
+              letter-spacing: g.text-spacing(5);
+              padding-left: 33px;
+              background: url(/assets/img/common/icon_cube01-white.svg) no-repeat left center / 25px auto;
+            }
+          }
+        }
+      }
+
+      &Bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        &__video {
+          position: sticky;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: max(810px, 100dvh);
+          object-fit: cover;
+          z-index: 1;
+          @include g.media(tab) {
+            height: max(calc(375px * 2), 100dvh);
+          }
+          @include g.media(sp) {
+            height: g.auto-value(375, 667, "vw");
+          }
+        }
+      }
+    }
+
+    // Service
+    &Service {
+      padding: 120px 0;
+      background: url(/assets/img/top/bg_cyber01.webp) no-repeat center top/cover;
+      @include g.media(tab) {
+        padding: 100px 0;
+      }
+      &__inner {
+        @include g.inner02-type01;
+      }
+      &__btn {
+        margin-top: 60px;
+      }
+
+      &Catch {
+        text-align: center;
+        margin-bottom: 32px;
+        &__main {
+          display: block;
+          line-height: 1.3;
+          letter-spacing: g.text-spacing(2);
+          &Accent01 {
+            font-size: 7.0rem;
+            color: g.$greenDark;
+            font-family: g.$font-family-inter;
+            font-weight: g.$font-family-inter-bold;
+            @include g.media(tab) {
+              font-size: 6.4rem;
+            }
+          }
+          &Accent02 {
+            font-size: 5.0rem;
+            font-family: g.$font-family-orbitron;
+            font-weight: g.$font-family-orbitron-regular;
+            @include g.media(tab) {
+              font-size: 4.0rem;
+            }
+          }
+        }
+        &__sub {
+          display: block;
+          margin-top: 8px;
+          &Text {
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: g.$font-family-noto-sans-jp-bold;
+            line-height: 1.7;
+            letter-spacing: g.text-spacing(5);
+            padding-left: 33px;
+            background: url(/assets/img/common/icon_cube01-black.svg) no-repeat left center / 26px auto;
+          }
+        }
+      }
+
+      &Panel {
+        margin-top: 60px;
+      }
+    }
+
+    // Works
+    &Works {
+      padding: 120px 0;
+      background: linear-gradient(180deg, g.$navy, #001943 100%);
+      @include g.media(tab) {
+        padding: 100px 0;
+      }
+      &__inner {
+        @include g.inner02-type01;
+      }
+      &__slider {
+        margin-top: 80px;
+        @include g.media(tab) {
+          margin-top: 92px;
+        }
+      }
+
+      &Catch {
+        width: fit-content;
+        margin: 0 auto;
+        &__main {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0 10px;
+          line-height: 1.3;
+          letter-spacing: g.text-spacing(2);
+          &Accent01 {
+            font-size: 7.0rem;
+            color: g.$cyan;
+            font-family: g.$font-family-inter;
+            font-weight: g.$font-family-inter-bold;
+            @include g.media(tab) {
+              font-size: 6.4rem;
+            }
+          }
+          &Accent02 {
+            font-size: 5.0rem;
+            color: g.$white;
+            font-family: g.$font-family-orbitron;
+            font-weight: g.$font-family-orbitron-regular;
+            @include g.media(tab) {
+              font-size: 4.0rem;
+            }
+          }
+        }
+        &__sub {
+          display: block;
+          margin-top: 8px;
+          &Text {
+            display: inline-block;
+            font-size: 1.8rem;
+            color: g.$white;
+            font-weight: g.$font-family-noto-sans-jp-bold;
+            line-height: 1.7;
+            letter-spacing: g.text-spacing(5);
+            padding-left: 33px;
+            background: url(/assets/img/common/icon_cube01-white.svg) no-repeat left center / 25px auto;
+          }
+        }
+      }
+    }
+
+    // News
+    &News {
+      padding: 120px 0;
+      background: g.$white;
+      @include g.media(tab) {
+        padding: 100px 0;
+      }
+      &__inner {
+        @include g.inner02-type01;
+      }
+      &__wrap {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        align-items: center;
+        gap: 16px;
+        @include g.media(tab) {
+          display: block;
+        }
+      }
+      &__list {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+      }
+      &__btn {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        @include g.media(tab) {
+          margin-top: 60px;
+        }
+      }
+
+      &Catch {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        margin-bottom: 32px;
+        &__main {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0 10px;
+          line-height: 1.3;
+          letter-spacing: g.text-spacing(2);
+          &Accent01 {
+            font-size: 7.0rem;
+            color: g.$greenDark;
+            font-family: g.$font-family-inter;
+            font-weight: g.$font-family-inter-bold;
+            @include g.media(tab) {
+              font-size: 6.4rem;
+            }
+          }
+          &Accent02 {
+            font-size: 5.0rem;
+            font-family: g.$font-family-orbitron;
+            font-weight: g.$font-family-orbitron-regular;
+            @include g.media(tab) {
+              font-size: 4.0rem;
+            }
+          }
+        }
+        &__sub {
+          display: block;
+          margin-top: 8px;
+          &Text {
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: g.$font-family-noto-sans-jp-bold;
+            line-height: 1.7;
+            letter-spacing: g.text-spacing(5);
+            padding-left: 33px;
+            background: url(/assets/img/common/icon_cube01-black.svg) no-repeat left center / 26px auto;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,19 @@
+@use "../global/" as g;
+
+.c- {
+  &text {
+    $text: &;
+
+    &01 {
+      @include g.text01;
+    }
+
+    &02 {
+      @include g.text02;
+      &--gray {
+        color: g.$textGray;
+        @extend #{$text}02;
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+@use "../global/" as g;
+
+.c- {
+  &card {
+    $card: &;
+
+    &01 {
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: min(60px, g.auto-value(1440, 60, "vw")) min(80px, g.auto-value(1440, 80, "vw"));
+        @include g.media(sp) {
+          gap: 32px 0;
+        }
+        #{$card}01[data-arrangement="center"] & {
+          justify-content: center;
+        }
+      }
+      &__item {
+        width: calc(50% - min(40px, g.auto-value(1440, 40, "vw")));
+        @include g.media(sp) {
+          width: 100%;
+        }
+      }
+      &__link {
+        display: block;
+      }
+      &__cover {
+        position: relative;
+        overflow: hidden;
+        border-radius: 3px;
+        &Img {
+          display: block;
+          width: 100%;
+          @include g.transition-set((transform, g.$transition01));
+          @include g.group-hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+      &__title {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid g.$blue;
+        &Text {
+          font-size: 2.2rem;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.7;
+          letter-spacing: g.text-spacing(4);
+          padding-right: 32px;
+          background: url(/assets/img/common/icon_arrow01-right.svg) no-repeat right center/24px auto;
+          @include g.transition-set((color, g.$transition01));
+          @include g.group-hover {
+            color: g.$textLink;
+          }
+        }
+      }
+      &__text {
+        @include g.text02;
+      }
+
+      &Tag {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 4px 16px;
+        border-radius: 0 3px 0 0;
+        background: rgba(g.$white, 0.8);
+        z-index: 1;
+        @include g.media(tab) {
+          padding: 2px 12px;
+        }
+        &__list {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        &__item {
+          position: relative;
+          font-size: 1.4rem;
+          color: g.$navy;
+          font-weight: g.$font-family-inter-semibold;
+          line-height: 1.8;
+          letter-spacing: g.text-spacing(2);
+          &:not(:last-of-type) {
+            padding-right: 21px;
+            &::before {
+              top: 50%;
+              right: 10px;
+              width: 1px;
+              height: 15px;
+              background: g.$blueDark;
+              transform: translateY(-50%) rotate(15deg);
+              @include g.position-before-after;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+@use "../global/" as g;
+
+.p- {
+  &company {
+    $company: &;
+
+    // Series
+    &Series {
+      position: relative;
+      &::before,
+      &::after {
+        left: 7px;
+        width: 2px;
+        @include g.position-before-after;
+        @include g.media(tab) {
+          left: 5px;
+        }
+      }
+      &::before {
+        top: 9.5px;
+        height: calc(100% - (9.5px * 2));
+        background: g.$graymiddle;
+        z-index: 2;
+      }
+      &::after {
+        top: calc(100% - 9.5px);
+        height: 30px;
+        background: linear-gradient(to bottom, g.$graymiddle 0%, g.$graymiddle 50%, transparent 50%, transparent 100%) repeat-y bottom left/100% 8px;
+        z-index: 1;
+      }
+      &__item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 0 g.auto-value(1100, 60, "%");
+        padding: 16px 0;
+        @include g.media(tab) {
+          grid-template-columns: 1fr;
+          gap: 18px 0;
+          padding: 12px 0;
+        }
+        &:not(:last-of-type) {
+          margin-bottom: 16px;
+          @include g.media(tab) {
+            margin-bottom: 12px;
+          }
+        }
+      }
+      &__year {
+        position: relative;
+        display: inline-block;
+        font-size: 4.0rem;
+        color: g.$navy;
+        font-family: g.$font-family-inter;
+        font-weight: g.$font-family-inter-bold;
+        line-height: 1.4;
+        letter-spacing: g.text-spacing(6);
+        padding-left: 40px;
+        &::before {
+          top: 20px;
+          left: 0;
+          width: 16px;
+          height: 16px;
+          border-radius: 2px;
+          background: g.$cyan;
+          z-index: 3;
+          @include g.position-before-after;
+        }
+        @include g.media(tab) {
+          font-size: 3.2rem;
+          padding-left: 28px;
+          &::before {
+            top: 16.4px;
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+
+      &Detail {
+        padding: 11px 0 0;
+        @include g.media(tab) {
+          padding: 0 0 0 28px;
+        }
+        &__item {
+          display: grid;
+          grid-template-columns: 100px 1fr;
+          align-items: flex-start;
+          gap: 0 32px;
+          @include g.media(tab) {
+            grid-template-columns: 70px 1fr;
+            gap: 0 12px;
+          }
+          &:not(:last-of-type) {
+            margin-bottom: 16px;
+            @include g.media(tab) {
+              margin-bottom: 12px;
+            }
+          }
+        }
+        &__month {
+          position: relative;
+          display: inline-block;
+          font-size: 1.6rem;
+          color: g.$navy;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.4;
+          letter-spacing: g.text-spacing(7);
+          @include g.media(tab) {
+            font-size: 1.5rem;
+          }
+          &Num {
+            font-size: 2.4rem;
+            font-family: g.$font-family-inter;
+            font-weight: g.$font-family-inter-bold;
+            margin-right: 3px;
+            @include g.media(tab) {
+              font-size: 1.8rem;
+            }
+          }
+          &::before {
+            top: 50%;
+            right: 8px;
+            width: 2px;
+            height: 34px;
+            background: g.$graymiddle;
+            transform: translateY(-50%) rotate(30deg);
+            @include g.position-before-after;
+            @include g.media(tab) {
+              right: 6px;
+              height: 26px;
+            }
+          }
+        }
+        &__wrap {
+          padding-top: 3px;
+          @include g.media(tab) {
+            padding-top: 0;
+          }
+        }
+        &__text {
+          @include g.text01;
+        }
+      }
+    }
+
+    // Board
+    &Board01 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include g.media(sp) {
+        display: block;
+      }
+      &__detail {
+        width: g.auto-value(1100, 410, "%");
+        @include g.media(sp) {
+          width: 100%;
+        }
+      }
+      &__cover {
+        width: g.auto-value(1100, 640, "%");
+        @include g.media(sp) {
+          width: 100%;
+          margin-top: 24px;
+        }
+        &Iframe {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 640 / 420;
+        }
+      }
+    }
+  }
+}
+

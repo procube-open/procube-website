@@ -1,0 +1,273 @@
+@use "../global/" as g;
+
+.l- {
+  &contact {
+    $contact: &;
+    padding: 120px 0;
+    margin-top: 100px;
+    background-image: url(/assets/img/common/bg_aurora01.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include g.media(tab) {
+      padding: 100px 0;
+      margin-top: 56px;
+      background-position: left center;
+    }
+    &[data-type="ad"] {
+      padding: 60px 0;
+      margin-left: 50px;
+      margin-right: 50px;
+      border-radius: 6px;
+      @include g.media(tab) {
+        padding: 36px 0;
+        margin-left: g.$space-sp;
+        margin-right: g.$space-sp;
+      }
+    }
+    [data-page="home"] & {
+      margin-top: 0;
+    }
+    [data-bg] + & {
+      margin-top: 0;
+    }
+    &__inner01 {
+      @include g.inner01-type01;
+    }
+    &__inner02 {
+      max-width: (1140px + g.$space-sp * 2);
+      margin: 0 auto;
+      padding: 0 g.$space-sp;
+    }
+    &__front01 {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 0 min(50px, g.auto-value(1440, 50, "vw"));
+      margin-bottom: 48px;
+      @include g.media(tab) {
+        grid-template-columns: 1fr;
+        gap: 32px 0;
+        margin-bottom: 60px;
+      }
+    }
+    &__front02 {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      align-items: center;
+      gap: 0 min(50px, g.auto-value(1440, 50, "vw"));
+      margin-bottom: 40px;
+      @include g.media(tab) {
+        grid-template-columns: 1fr;
+        gap: 24px 0;
+        margin-bottom: 28px;
+      }
+    }
+    &__detail01 {
+      margin-top: 37px;
+      @include g.media(tab) {
+        margin-top: 0;
+      }
+    }
+    &__text {
+      color: g.$white;
+      @include g.text01;
+    }
+
+    &Catch01 {
+      &__main {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 10px;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(2);
+        &Accent01 {
+          font-size: 7.0rem;
+          color: g.$cyan;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          @include g.media(tab) {
+            font-size: 6.4rem;
+          }
+        }
+        &Accent02 {
+          font-size: 5.0rem;
+          color: g.$white;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-regular;
+          @include g.media(tab) {
+            font-size: 4.0rem;
+          }
+        }
+      }
+      &__sub {
+        display: block;
+        @include g.media(tab) {
+          margin-top: 8px;
+        }
+        &Text {
+          display: inline-block;
+          font-size: 1.8rem;
+          color: g.$white;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.7;
+          letter-spacing: g.text-spacing(5);
+          padding-left: 33px;
+          background: url(/assets/img/common/icon_cube01-white.svg) no-repeat left center/25px auto;
+          @include g.media(tab) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+    &Catch02 {
+      &__read {
+        display: block;
+        font-size: 1.6rem;
+        color: g.$white;
+        font-family: g.$font-family-inter;
+        font-weight: g.$font-family-inter-bold;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(2);
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+        background-image: url(/assets/img/common/icon_dot01.svg);
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: auto 6px;
+        @include g.media(tab) {
+          font-size: 1.4rem;
+          padding-bottom: 10px;
+          margin-bottom: 12px;
+          background-size: auto 4px;
+        }
+        &Accent {
+          font-size: 1.5rem;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-bold;
+          @include g.media(tab) {
+            font-size: 1.3rem;
+          }
+        }
+      }
+      &__text {
+        display: block;
+        font-size: 4.2rem;
+        color: g.$white;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(8);
+        @include g.media(tab) {
+          font-size: 3.0rem;
+        }
+      }
+    }
+
+    &Panel {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 min(32px, g.auto-value(1440, 32, "vw"));
+      @include g.media(tab) {
+        grid-template-columns: 1fr;
+        gap: 32px 0;
+      }
+      &__link {
+        display: block;
+        padding: 26px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+        background: rgba(g.$textColor, 0.2);
+        backdrop-filter: blur(4px);
+        pointer-events: auto;
+        @include g.transition-set((background, g.$transition02));
+        &--yellowGreen {
+          border-color: g.$yellowGreen;
+          @extend #{$contact}Panel__link;
+          @include g.hover {
+            background: g.$yellowGreen;
+          }
+        }
+        &--blue {
+          border-color: g.$blue;
+          @extend #{$contact}Panel__link;
+          @include g.hover {
+            background: g.$blue;
+          }
+        }
+      }
+      &__title {
+        margin-bottom: 16px;
+        &Read {
+          font-size: 1.3rem;
+          color: g.$white;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          line-height: 1.0;
+          text-align: center;
+          margin-bottom: 8px;
+          @include g.transition-set((color, g.$transition02));
+          @include g.group-hover {
+            color: g.$black;
+          }
+          &Accent01 {
+            font-size: 1.2rem;
+          }
+        }
+        &Main {
+          font-size: 2.0rem;
+          color: g.$white;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          line-height: 1.0;
+          text-align: center;
+          @include g.transition-set((color, g.$transition02));
+          @include g.group-hover {
+            color: g.$black;
+          }
+        }
+      }
+      &__icon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 46px;
+        height: 46px;
+        margin: 0 auto;
+        &Bg {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          will-change: animation;
+          @include g.group-hover {
+            animation: spread01 0.5s;
+          }
+          #{$contact}Panel__link--yellowGreen & {
+            background: g.$yellowGreen;
+          }
+          #{$contact}Panel__link--blue & {
+            background: g.$blue;
+          }
+        }
+        &Img {
+          position: absolute;
+          display: block;
+          @include g.position-center-xy;
+          @include g.transition-set((filter, g.$transition02));
+          @include g.group-hover {
+            filter: brightness(0) saturate(100%);
+          }
+          &--type01 {
+            width: 24px;
+            @extend #{$contact}Panel__iconImg;
+          }
+          &--type02 {
+            width: 30px;
+            @extend #{$contact}Panel__iconImg;
+          }
+        }
+      }
+    }
+  }
+}

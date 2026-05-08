@@ -1,0 +1,53 @@
+@use "../global/" as g;
+
+.l- {
+  &breadcrumb {
+    $breadcrumb: &;
+    margin-top: 84px;
+    @include g.media(tab) {
+      margin-top: 50px;
+    }
+    &__inner {
+      padding-right: max(g.$space-sp, calc((100% - 1320px) / 2));
+    }
+    &__wrap {
+      overflow-x: auto;
+      scrollbar-width: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__list {
+      display: flex;
+    }
+    &__item {
+      position: relative;
+      flex-shrink: 0;
+      &:not(:first-of-type) {
+        padding-left: 48px;
+        &::before {
+          left: 16px;
+          width: 16px;
+          aspect-ratio: 16 / 16;
+          background: url(/assets/img/common/icon_triangle01-right.svg) no-repeat center/cover;
+          @include g.position-before-after;
+          @include g.position-center-y;
+        }
+      }
+    }
+    &__link,
+    &__text {
+      font-size: 1.3rem;
+      line-height: 1.7;
+    }
+    &__link {
+      color: g.$textGray;
+      @include g.transition-set((color, g.$transition01));
+      @include g.hover {
+        color: g.$textLink;
+      }
+    }
+    &__text {
+      color: navy;
+    }
+  }
+}

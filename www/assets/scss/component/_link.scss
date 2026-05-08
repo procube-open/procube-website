@@ -1,0 +1,50 @@
+@use "../global/" as g;
+
+.c- {
+  &link {
+    $link: &;
+
+    // Anchor
+    &Anchor01 {
+      &__inner {
+        @include g.inner02-type01;
+      }
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px 40px;
+        @include g.media(tab) {
+          gap: 18px 28px;
+        }
+      }
+      &__link {
+        position: relative;
+        font-size: 1.8rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        padding-right: 34px;
+        @include g.transition-set((color, g.$transition01));
+        @include g.media(tab) {
+          font-size: 1.6rem;
+        }
+        @include g.hover {
+          color: g.$textLink;
+        }
+        &::before {
+          right: 0;
+          width: 22px;
+          aspect-ratio: 40 / 41;
+          background: url(/assets/img/common/icon_arrow01-bottom.svg) no-repeat center/cover;
+          @include g.position-before-after;
+          @include g.position-center-y;
+        }
+        &--type01 {
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          @extend #{$link}Anchor01__link;
+        }
+      }
+    }
+  }
+}

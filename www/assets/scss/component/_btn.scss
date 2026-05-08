@@ -1,0 +1,179 @@
+@use "../global/" as g;
+
+.c- {
+  &btn {
+    $btn: &;
+
+    &01 {
+      container-type: inline-size;
+      &[data-position="center"] {
+        text-align: center;
+      }
+      &[data-position="tabCenter"] {
+        @include g.media(tab) {
+          text-align: center;
+        }
+      }
+      &[data-position="spCenter"] {
+        @include g.media(sp) {
+          text-align: center;
+        }
+      }
+      &[data-style="white"] {
+        #{$btn}01__link {
+          background: g.$white;
+          @include g.hover {
+            background: #E5FAFA;
+          }
+        }
+        #{$btn}01__text {
+          color: g.$textColor;
+        }
+      }
+      &[data-direction="left"] {
+        #{$btn}01__link {
+          padding: 22.5px 32px 22.5px 16px;
+          border-radius: 100px 3px 3px 100px;
+        }
+        #{$btn}01__text {
+          text-align: right;
+          padding-right: 0;
+          padding-left: 56px;
+          &::before {
+            right: auto;
+            left: 0;
+            transform: translateY(-50%) scale(-1, 1);
+          }
+          @include g.group-hover {
+            &::before {
+              transform: translateY(-50%) scale(calc(50 / 40 * -1), calc(50 / 40));
+            }
+          }
+        }
+      }
+      &__wrap {
+        min-width: 340px;
+      }
+      &__link {
+        position: relative;
+        display: inline-block;
+        min-width: 340px;
+        padding: 22.5px 16px 22.5px 32px;
+        border-radius: 3px 100px 100px 3px;
+        background: g.$navy;
+        @include g.transition-set((background, g.$transition01));
+        @include g.hover {
+          background: g.$textColor;
+        }
+        @container (max-width: 339px) {
+          min-width: 0;
+          width: 100%;
+        }
+        &[target="_blank"] {
+          #{$btn}01__text {
+            &::before {
+              aspect-ratio: 24 / 24;
+              background-image: url(/assets/img/common/icon_target01.svg);
+            }
+          }
+        }
+        &--more {
+          @extend #{$btn}01__link;
+          #{$btn}01__text {
+            &::before {
+              aspect-ratio: 40 / 41;
+              background-image: url(/assets/img/common/icon_arrow01-bottom.svg);
+            }
+          }
+        }
+      }
+      &__text {
+        position: relative;
+        display: inline-block;
+        font-size: 1.6rem;
+        color: g.$white;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        text-align: left;
+        width: 100%;
+        padding-right: 56px;
+        &::before {
+          right: 0;
+          width: 40px;
+          aspect-ratio: 20 / 21;
+          background-image: url(/assets/img/common/icon_arrow01-right.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          @include g.position-before-after;
+          @include g.position-center-y;
+          @include g.transition-set((transform, g.$transition01));
+        }
+        @include g.group-hover {
+          &::before {
+            transform: translateY(-50%) scale(calc(50 / 40));
+          }
+        }
+      }
+      &--small {
+        @extend #{$btn}01;
+        #{$btn}01__wrap {
+          min-width: 280px;
+        }
+        #{$btn}01__link {
+          min-width: 280px;
+          padding: 14.5px 12px 14.5px 32px;
+          @container (max-width: 339px) {
+            min-width: 280px;
+            width: auto;
+          }
+          @container (max-width: 279px) {
+            min-width: 0;
+            width: 100%;
+          }
+          &[target="_blank"] {
+            #{$btn}01__text {
+              &::before {
+                background-image: url(/assets/img/common/icon_target02.svg);
+              }
+            }
+          }
+          &--more {
+            #{$btn}01__text {
+              &::before {
+                background-image: url(/assets/img/common/icon_arrow02-bottom.svg);
+              }
+            }
+          }
+        }
+        #{$btn}01__text {
+          padding-right: 44px;
+          &::before {
+            width: 32px;
+            background-image: url(/assets/img/common/icon_arrow02-right.svg);
+          }
+          @include g.group-hover {
+            &::before {
+              transform: translateY(-50%) scale(calc(40 / 32));
+            }
+          }
+        }
+      }
+    }
+
+    // Lineup
+    &Lineup01 {
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px 40px;
+        @include g.media(tab) {
+          gap: 18px 28px;
+        }
+      }
+      &__item {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}

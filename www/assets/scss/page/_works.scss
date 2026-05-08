@@ -1,0 +1,102 @@
+@use "../global/" as g;
+
+.p- {
+  &works {
+    $works: &;
+
+    // Catch
+    &Catch01 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 32px;
+      margin-bottom: 24px;
+      @include g.media(tab) {
+        gap: 6px 24px;
+        margin-bottom: 18px;
+      }
+
+      &Title {
+        display: flex;
+        align-items: flex-start;
+        gap: 0 16px;
+        @include g.media(tab) {
+          gap: 0 12px;
+        }
+        &__num {
+          flex-shrink: 0;
+          font-size: 3.2rem;
+          color: g.$blueDark;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-bold;
+          line-height: 1.3;
+          margin-top: 9px;
+          border-bottom: 1px solid g.$cyan;
+          @include g.media(tab) {
+            font-size: 2.4rem;
+            margin-top: 5px;
+          }
+        }
+        &__text {
+          font-size: 3.2rem;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.7;
+          letter-spacing: g.text-spacing(5);
+          @include g.media(tab) {
+            font-size: 2.4rem;
+          }
+        }
+      }
+
+      &Tag {
+        &__list {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          gap: 8px;
+          @include g.media(tab) {
+            gap: 6px;
+          }
+        }
+        &__item {
+          font-size: 1.5rem;
+          color: g.$blueDark;
+          line-height: 1.7;
+          padding: 0.75px 8px;
+          border-radius: 3px;
+          border: 1px solid g.$blueDark;
+          background: g.$white;
+          @include g.media(tab) {
+            font-size: 1.4rem;
+            padding: 0.5px 6px;
+          }
+        }
+      }
+    }
+
+    // Detail
+    &Detail01 {
+      &__item {
+        &:not(:last-of-type) {
+          margin-bottom: 26px;
+          @include g.media(tab) {
+            margin-bottom: 20px;
+          }
+        }
+      }
+      &__title01 {
+        font-size: 1.8rem;
+        color: g.$navy;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        margin-bottom: 8px;
+        @include g.media(tab) {
+          font-size: 1.6rem;
+          margin-bottom: 6px;
+        }
+      }
+    }
+  }
+}
+

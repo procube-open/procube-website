@@ -1,0 +1,104 @@
+@use "sass:map";
+
+// breakpoint
+$breakpoints: (
+  "sp": "screen and (max-width: 599px)",
+  "tab": "screen and (max-width: 1023px)",
+  "pc-tab": "screen and (min-width: 600px)",
+  "pc-only": "screen and (min-width: 1024px)",
+  "tab-only": "screen and (min-width: 600px) and (max-width: 1023px)",
+) !default;
+
+@mixin media($breakpoint: sp) {
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+
+// font-family
+$font-family-noto-sans-jp: 'Noto Sans JP', sans-serif;
+$font-family-inter: 'Inter', sans-serif;
+$font-family-orbitron: 'Orbitron', sans-serif;
+
+
+// font-weight
+$font-family-noto-sans-jp-regular: 400;
+$font-family-noto-sans-jp-medium: 500;
+$font-family-noto-sans-jp-semibold: 600;
+$font-family-noto-sans-jp-bold: 700;
+$font-family-noto-sans-jp-extraBold: 800;
+$font-family-inter-regular: 400;
+$font-family-inter-medium: 500;
+$font-family-inter-semibold: 600;
+$font-family-inter-bold: 700;
+$font-family-inter-extraBold: 800;
+$font-family-orbitron-regular: 400;
+$font-family-orbitron-medium: 500;
+$font-family-orbitron-semibold: 600;
+$font-family-orbitron-bold: 700;
+$font-family-orbitron-extraBold: 800;
+
+
+// color
+$cyan:#17EBDD;
+$blue:#18B4E5;
+$blueDark:#0473BD;
+$greenDark:#00A7AD;
+$yellowGreen:#8BCC0A;
+$navy:#0D3578;
+$magenta:#FF0080;
+$gray:#2A384C;
+$textColor:#05082F;
+$textGray:#56646B;
+$textLink:#008091;
+$bg:#F3F9FA;
+$graylight:#EFF5F6;
+$graymiddle: #C3E1E5;
+$white:#FFF;
+$black:#000;
+$gray-dark:#8B9EA3;
+$purple:#370D6A;
+$yellow:#F4CF31;
+$green:#076867;
+$pdf: #CD0104;
+$attension: #FF0000;
+
+$utility-color: (
+  "cyan": $cyan,
+  "blue": $blue,
+  "blueDark": $blueDark,
+  "greenDark": $greenDark,
+  "yellowGreen": $yellowGreen,
+  "navy": $navy,
+  "magenta": $magenta,
+  "gray": $gray,
+  "textColor": $textColor,
+  "textGray": $textGray,
+  "textLink": $textLink,
+  "bg": $bg,
+  "graylight": $graylight,
+  "graymiddle": $graymiddle,
+  "white": $white,
+  "black": $black,
+  "gray-dark": $gray-dark,
+  "purple": $purple,
+  "yellow": $yellow,
+  "green": $green,
+  "pdf": $pdf,
+  "attension": $attension,
+);
+
+
+// transition
+$transition01: .3s;
+$transition02: 1.0s;
+
+
+// opacity
+$opacity: .7;
+
+
+// space
+$space-pc: 30px;
+$space-sp: 16px;

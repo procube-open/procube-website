@@ -1,0 +1,384 @@
+@use "../global/" as g;
+
+.p- {
+  &products {
+    $products: &;
+
+    &__title01 {
+      text-align: center;
+      margin-bottom: 32px;
+      @include g.media(tab) {
+        margin-bottom: 24px;
+      }
+      &Num {
+        display: inline-block;
+        font-size: 2.0rem;
+        color: g.$blueDark;
+        font-family: g.$font-family-orbitron;
+        font-weight: g.$font-family-orbitron-bold;
+        line-height: 1.3;
+        border-bottom: 1px solid g.$cyan;
+        margin-bottom: 4px;
+        @include g.media(tab) {
+          font-size: 1.8rem;
+          margin-bottom: 3px;
+        }
+      }
+      &Text {
+        display: block;
+        font-size: 3.2rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        @include g.media(tab) {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    // Box
+    &Box01 {
+      padding: 50px;
+      background: g.$white;
+      @include g.media(tab) {
+        padding: 32px;
+      }
+    }
+
+    // Catch
+    &Catch01 {
+      text-align: center;
+      margin-bottom: 32px;
+      @include g.media(tab) {
+        margin-bottom: 24px;
+      }
+      &__title {
+        display: block;
+        font-size: 4.2rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.5;
+        letter-spacing: g.text-spacing(2);
+        @include g.media(tab) {
+          font-size: 3.0rem;
+        }
+      }
+      &__read {
+        display: inline-block;
+        font-size: 1.6rem;
+        color: g.$white;
+        font-weight: g.$font-family-noto-sans-jp-semibold;
+        line-height: 1.8;
+        letter-spacing: g.text-spacing(2);
+        padding: 0 16px;
+        margin-top: 8px;
+        background: g.$navy;
+        @include g.media(tab) {
+          font-size: 1.5rem;
+          padding: 0 12px;
+          margin-top: 6px;
+        }
+      }
+    }
+
+    // Panel
+    &Panel01 {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: min(35px, g.auto-value(1440, 35, "vw"));
+        @include g.media(sp) {
+          grid-template-columns: 1fr;
+          gap: 26px 0;
+        }
+      }
+      &__cover {
+        margin-bottom: 16px;
+        border-bottom: 1px solid g.$blue;
+        @include g.media(tab) {
+          margin-bottom: 12px;
+        }
+        &Img {
+          display: block;
+          width: 100%;
+        }
+      }
+      &__read {
+        font-size: 1.8rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        text-align: center;
+        @include g.media(tab) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    &Panel02 {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: min(50px, g.auto-value(1440, 50, "vw"));
+        @include g.media(sp) {
+          grid-template-columns: 1fr;
+          gap: 32px 0;
+        }
+      }
+      &__num {
+        text-align: center;
+        margin-bottom: 8px;
+        @include g.media(tab) {
+          margin-bottom: 6px;
+        }
+        &Text {
+          display: inline-block;
+          font-size: 2.0rem;
+          color: g.$blueDark;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-bold;
+          line-height: 1.3;
+          border-bottom: 1px solid g.$cyan;
+          @include g.media(tab) {
+            font-size: 1.8rem;
+          }
+        }
+      }
+      &__cover {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        @include g.media(tab) {
+          max-width: 112px;
+        }
+      }
+      &__title {
+        font-size: 2.2rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.3;
+        text-align: center;
+        margin-top: 8px;
+        @include g.media(tab) {
+          font-size: 1.7rem;
+          margin-top: 6px;
+        }
+        &Read {
+          color: g.$blueDark;
+        }
+        &Accent01 {
+          font-size: 3.8rem;
+          @include g.media(tab) {
+            font-size: 2.8rem;
+          }
+          &--en {
+            @extend #{$products}Panel02__titleAccent01;
+            font-family: g.$font-family-inter;
+          }
+        }
+        &Accent02 {
+          font-size: 4.2rem;
+          font-family: g.$font-family-inter;
+          @include g.media(tab) {
+            font-size: 3.0rem;
+          }
+        }
+      }
+    }
+    &Panel03 {
+      &__list {
+        counter-reset: products-Panel03-counter;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: min(40px, g.auto-value(1440, 40, "vw"));
+        @include g.media(sp) {
+          grid-template-columns: 1fr;
+          gap: 32px 0;
+        }
+      }
+      &__item {
+        counter-increment: products-Panel03-counter;
+        position: relative;
+        &::before {
+          content: counter(products-Panel03-counter, decimal-leading-zero);
+          position: absolute;
+          top: -35px;
+          left: 12px;
+          font-size: 3.8rem;
+          color: g.$cyan;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          line-height: 1.7;
+          @include g.media(tab) {
+            top: -24px;
+            left: 9px;
+            font-size: 2.8rem;
+          }
+        }
+      }
+      &__cover {
+        overflow: hidden;
+        border-radius: 3px;
+        &Img {
+          display: block;
+          width: 100%;
+        }
+      }
+      &__read {
+        font-size: 2.0rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        margin-top: 16px;
+        @include g.media(tab) {
+          font-size: 1.8rem;
+          margin-top: 12px;
+        }
+      }
+
+      &Tag {
+        margin-top: 16px;
+        @include g.media(tab) {
+          margin-top: 12px;
+        }
+        &__list {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          @include g.media(tab) {
+            gap: 12px;
+          }
+        }
+        &__item {
+          font-size: 1.5rem;
+          color: g.$blueDark;
+          line-height: 1.7;
+          padding: 0 8px;
+          border: 1px solid g.$blueDark;
+          border-radius: 3px;
+          background: g.$white;
+          @include g.media(tab) {
+            font-size: 1.4rem;
+            padding: 0 6px;
+          }
+        }
+      }
+    }
+
+    // Step
+    &Step01 {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 80px;
+        @include g.media(sp) {
+          grid-template-columns: 1fr;
+          gap: 48px 0;
+        }
+      }
+      &__item {
+        position: relative;
+        &:not(:first-of-type) {
+          &::before {
+            left: calc(-30px - 20px);
+            width: 30px;
+            height: 62px;
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            background: g.$navy;
+            @include g.position-before-after;
+            @include g.position-center-y;
+            @include g.media(sp) {
+              top: -36px;
+              width: 47px;
+              height: 24px;
+              clip-path: polygon(0 0, 100% 0, 50% 100%);
+              @include g.position-center-x;
+            }
+          }
+        }
+      }
+      &__num {
+        text-align: center;
+        margin-bottom: 16px;
+        @include g.media(tab) {
+          margin-bottom: 12px;
+        }
+        &Text {
+          display: inline-block;
+          font-size: 2.4rem;
+          color: g.$blueDark;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-bold;
+          line-height: 1.3;
+          border-bottom: 1px solid g.$cyan;
+          @include g.media(tab) {
+            font-size: 1.8rem;
+          }
+        }
+      }
+      &__cover {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        @include g.media(tab) {
+          max-width: 112px;
+        }
+      }
+      &__read {
+        font-size: 2.2rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.3;
+        text-align: center;
+        margin-top: 16px;
+        @include g.media(tab) {
+          font-size: 1.7rem;
+          margin-top: 12px;
+        }
+      }
+    }
+
+    // Sign
+    &Sign01 {
+      margin: 40px 0;
+      @include g.media(tab) {
+        margin: 28px 0;
+      }
+      &__icon {
+        display: block;
+        width: 119px;
+        margin: 0 auto;
+        @include g.media(tab) {
+          width: 67px;
+        }
+      }
+    }
+
+    // symbol
+    &symbol01 {
+      text-align: center;
+      margin-bottom: 24px;
+      @include g.media(tab) {
+        margin-bottom: 18px;
+      }
+      &__text {
+        font-size: 6.0rem;
+        font-family: g.$font-family-inter;
+        font-weight: g.$font-family-inter-extraBold;
+        line-height: 1.3;
+        text-align: center;
+        background: linear-gradient(180deg, g.$blue, g.$textColor 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        > sup, > sub {
+          background: linear-gradient(180deg, g.$blue, g.$textColor 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        @include g.media(tab) {
+          font-size: 3.6rem;
+        }
+      }
+    }
+  }
+}

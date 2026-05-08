@@ -1,0 +1,213 @@
+@use "../global/" as g;
+
+.p- {
+  &contact {
+    $contact: &;
+
+    // Board
+    &Board {
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 24px;
+      border: 1px solid g.$blueDark;
+      border-radius: 3px;
+      background: rgba(g.$white, 0.8);
+      @include g.media(tab) {
+        padding: 18px;
+        margin: 0 auto 36px;
+      }
+      &__title {
+        font-size: 1.8rem;
+        color: g.$navy;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        letter-spacing: g.text-spacing(5);
+        text-align: center;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid g.$graymiddle;
+        @include g.media(tab) {
+          font-size: 1.6rem;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+        }
+      }
+      &__tel {
+        font-size: 2.0rem;
+        font-family: g.$font-family-inter;
+        line-height: 1.7;
+        text-align: center;
+        @include g.media(tab) {
+          font-size: 1.8rem;
+        }
+        &Link {
+          color: g.$textLink;
+          text-decoration: underline;
+          @include g.hover01;
+        }
+      }
+      &__read {
+        text-align: center;
+        margin-top: 8px;
+        @include g.text01;
+        @include g.media(tab) {
+          margin-top: 6px;
+        }
+      }
+    }
+
+    // Sign
+    &Sign {
+      &__detail {
+        margin-top: 40px;
+        @include g.media(tab) {
+          margin-top: 28px;
+        }
+      }
+      &__text {
+        color: g.$textGray;
+        text-align: center;
+        @include g.text01;
+      }
+
+      &Step {
+        &__list {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0 62px;
+          @include g.media(tab) {
+            gap: 0 46px;
+          }
+        }
+        &__item {
+          position: relative;
+          &:not(:last-of-type) {
+            &::before {
+              right: calc(-46px - 8px);
+              width: 46px;
+              aspect-ratio: 46 / 6;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              @include g.position-before-after;
+              @include g.position-center-y;
+              @include g.media(tab) {
+                right: calc(-32px - 7px);
+                width: 32px;
+              }
+            }
+            &[data-step="on"] {
+              &::before {
+                background-image: url(/assets/img/contact/icon_dot01.svg);
+              }
+            }
+            &[data-step="off"] {
+              &::before {
+                background-image: url(/assets/img/contact/icon_dot02.svg);
+              }
+            }
+            &:has(+ [data-step="on"]) {
+              &::before {
+                background-image: url(/assets/img/contact/icon_dot03.svg);
+              }
+            }
+          }
+        }
+        &__icon {
+          display: block;
+          width: 72px;
+          @include g.media(tab) {
+            width: 54px;
+          }
+        }
+      }
+    }
+
+    // Form
+    &Form {
+      margin-top: 40px;
+      @include g.media(tab) {
+        margin-top: 28px;
+      }
+      &__label {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        gap: 8px;
+        &Badge {
+          flex-shrink: 0;
+          display: inline-block;
+          font-size: 1.2rem;
+          color: g.$white;
+          font-weight: g.$font-family-noto-sans-jp-medium;
+          line-height: 1.4;
+          letter-spacing: g.text-spacing(2.5);
+          padding: 3px 8px;
+          border-radius: 4px;
+          background: g.$blueDark;
+        }
+      }
+      &__text {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        &--type01 {
+          @extend #{$contact}Form__text;
+          max-width: 640px;
+        }
+      }
+
+      &Table {
+        width: 100%;
+        tbody {
+          th, td {
+            @include g.media(tab) {
+              display: block;
+              width: 100%;
+            }
+          }
+          th {
+            padding: 30px 24px;
+            border-bottom: 1px solid g.$blueDark;
+            background: g.$white;
+            @include g.media(tab) {
+              padding: 24px;
+              border-bottom: 1px solid g.$graymiddle;
+            }
+          }
+          td {
+            vertical-align: middle;
+            padding: 24px;
+            border-bottom: 1px solid g.$graymiddle;
+            background: g.$white;
+            @include g.media(tab) {
+              border-bottom: 1px solid g.$blueDark;
+            }
+          }
+        }
+      }
+    }
+
+    // Induction
+    &Induction {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 43px;
+      margin-top: 60px;
+      @include g.media(tab) {
+        flex-direction: column;
+        gap: 26px 0;
+        margin-top: 36px;
+      }
+      &__item {
+        width: 340px;
+      }
+    }
+  }
+}
+

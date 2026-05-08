@@ -1,0 +1,12 @@
+@use "variables" as var;
+
+@keyframes spread01 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(15);
+    opacity: 0;
+  }
+}

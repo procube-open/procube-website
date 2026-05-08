@@ -1,0 +1,201 @@
+@use "../global/" as g;
+
+.l- {
+  &footer {
+    $footer: &;
+
+    // Nav
+    &Nav {
+      padding: 80px 0;
+      background: url(/assets/img/common/bg_sand01.webp) no-repeat center/cover;
+      @include g.media(tab) {
+        padding: 40px 0 32px;
+      }
+      &__inner {
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        gap: 24px;
+        @include g.inner01-type01;
+        @include g.media(tab) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      &Symbol {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 145px 0;
+        @include g.media(tab) {
+          flex-direction: column;
+          gap: 32px 0;
+        }
+        &__logo {
+          &Img {
+            display: block;
+            width: 100%;
+            max-width: 129px;
+          }
+        }
+        &__message {
+          &Img {
+            display: block;
+            width: 100%;
+            max-width: 374px;
+            @include g.media(tab) {
+              max-width: 343px;
+            }
+          }
+        }
+      }
+
+      &Lineup {
+        &__box {
+          padding: 32px 0;
+          &:not(:last-of-type) {
+            border-bottom: 1px solid g.$white;
+          }
+          &:last-of-type {
+            padding-bottom: 0;
+          }
+          &--tabspNone {
+            @extend #{$footer}NavLineup__box;
+            @include g.media(tab) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &Menu {
+        display: flex;
+        gap: 0 min(71px, g.auto-value(1440, 71, "vw"));
+        &__item {
+          &:not(:last-of-type) {
+            margin-bottom: 24px;
+          }
+        }
+        &__link {
+          display: inline-block;
+          font-size: 1.6rem;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.0;
+          padding-bottom: 6px;
+          background: linear-gradient(g.$cyan 100%) no-repeat left bottom / 0 1px, linear-gradient(transparent 100%) no-repeat left bottom / 100% 1px;
+          @include g.transition-set((color, g.$transition01), (background, g.$transition01));
+          @include g.hover {
+            color: g.$textLink;
+            background: linear-gradient(g.$cyan 100%) no-repeat left bottom / 100% 1px, linear-gradient(transparent 100%) no-repeat left bottom / 0 1px;
+          }
+        }
+
+        &Child {
+          margin-top: 4px;
+          &__item {
+            &:not(:last-of-type) {
+              margin-bottom: 2px;
+            }
+          }
+          &__link {
+            display: inline-block;
+            font-size: 1.3rem;
+            color: g.$textGray;
+            line-height: 1.8;
+            @include g.transition-set((color, g.$transition01));
+            @include g.hover {
+              color: g.$textLink;
+            }
+          }
+        }
+      }
+
+      &Notation {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 40px;
+        &__title,
+        &__text {
+          font-size: 1.5rem;
+          line-height: 1.7;
+        }
+      }
+
+      &Relation {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        &__list {
+          display: flex;
+          align-items: center;
+        }
+        &__item {
+          position: relative;
+          &:not(:last-of-type) {
+            padding-right: 10px;
+            margin-right: 9px;
+            &::before {
+              right: 0;
+              width: 1px;
+              height: 12px;
+              background: g.$textGray;
+              @include g.position-before-after;
+              @include g.position-center-y;
+            }
+          }
+        }
+        &__link {
+          font-size: 1.2rem;
+          color: g.$textGray;
+          line-height: 1.7;
+          @include g.transition-set((color, g.$transition01));
+          @include g.hover {
+            color: g.$textLink;
+          }
+        }
+        &__copy {
+          font-size: 1.4rem;
+          color: g.$textGray;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-regular;
+          line-height: 1.0;
+        }
+      }
+    }
+
+    // PageTop
+    &PageTop {
+      position: fixed;
+      right: 28px;
+      bottom: 28px;
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid g.$white;
+      background: rgba(g.$white, 0.7);
+      z-index: 1001;
+      @include g.transition-set((transform, g.$transition01));
+      @include g.media(tab) {
+        right: 16px;
+        bottom: 16px;
+      }
+      @include g.hover {
+        transform: scale(1.2);
+      }
+      &__icon {
+        position: absolute;
+        top: calc(50% - 2px);
+        left: 50%;
+        display: block;
+        width: 20px;
+        transform: translate(-50%, -50%);
+        @include g.transition-set((transform, g.$transition01));
+        @include g.group-hover {
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+      }
+    }
+  }
+}

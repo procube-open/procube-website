@@ -1,0 +1,44 @@
+@use "../global/" as g;
+
+.c- {
+  &img {
+    $img: &;
+
+    &01 {
+      display: flex;
+      &[data-position="center"] {
+        justify-content: center;
+      }
+      &__figure {
+        display: table;
+      }
+      &__caption {
+        display: table-caption;
+        caption-side: bottom;
+        font-size: 1.5rem;
+        color: g.$textGray;
+        font-weight: g.$font-family-noto-sans-jp-regular;
+        line-height: 1.7;
+        margin-top: 6px;
+        @include g.media(tab) {
+          font-size: 1.4rem;
+        }
+        &--type01 {
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-regular;
+          @extend #{$img}01__caption;
+        }
+        &[data-position="center"] {
+          text-align: center;
+        }
+      }
+      &__cover {
+        display: block;
+        &--border {
+          @extend #{$img}01__cover;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@use "../global/" as g;
+
+.c- {
+  &form {
+    $form: &;
+
+    // Text
+    &Text01 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      &__input {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        width: 100%;
+        padding: 6.5px 10px;
+        border: 1px solid #C2CDD1;
+        border-radius: 5px;
+        @include g.transition-set((border, g.$transition01));
+        &::placeholder {
+          color: #C2CDD1;
+        }
+        &[data-alert="on"] {
+          border: 1px solid g.$attension;;
+        }
+        &:focus {
+          outline: none;
+          border: 1px solid g.$cyan;
+        }
+        &[data-width="308"] {
+          max-width: 308px;
+        }
+        &[data-width="536"] {
+          max-width: 536px;
+        }
+        &[data-width="640"] {
+          max-width: 640px;
+        }
+      }
+      &__note {
+        font-size: 1.6rem;
+        line-height: 1.7;
+      }
+    }
+
+    // Sentence
+    &Sentence01 {
+      &__textarea {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        width: 100%;
+        height: 160px;
+        padding: 4px 10px;
+        border: 1px solid #C2CDD1;
+        border-radius: 5px;
+        @include g.transition-set((border, g.$transition01));
+        &::placeholder {
+          color: #C2CDD1;
+        }
+        &[data-alert="on"] {
+          border: 1px solid g.$attension;;
+        }
+        &:focus {
+          outline: none;
+          border: 1px solid g.$cyan;
+        }
+        &[data-width="640"] {
+          max-width: 640px;
+        }
+      }
+    }
+
+    // Radio
+    &Radio01 {
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 8px 16px;
+      }
+      &__label {
+        cursor: pointer;
+      }
+      &__input {
+        display: none;
+        &:checked ~ #{$form}Radio01__text {
+          &::after {
+            background: g.$blueDark;
+          }
+        }
+      }
+      &__text {
+        position: relative;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        letter-spacing: g.text-spacing(0.5);
+        padding-left: 22px;
+        &::before, &::after {
+          border-radius: 50%;
+          @include g.position-before-after;
+        }
+        &::before {
+          top: 4px;
+          left: 0;
+          width: 18px;
+          height: 18px;
+          border: 1px solid #C2CDD1;
+          background: g.$white;
+          z-index: 1;
+        }
+        &::after {
+          top: calc(4px + 4px);
+          left: 4px;
+          width: 10px;
+          height: 10px;
+          background: g.$white;
+          z-index: 2;
+          @include g.transition-set((background, g.$transition01));
+        }
+      }
+    }
+
+    // Alert
+    &Alert01 {
+      font-size: 1.6rem;
+      color: g.$attension;
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+  }
+}

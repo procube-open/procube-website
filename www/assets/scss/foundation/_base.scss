@@ -1,0 +1,100 @@
+@use "../global/" as g;
+
+// fixed style
+:where(:root) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+  hyphens: auto;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, area, button, [role="button"], input:not([type="range"]), label, select, summary, textarea) {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+@media (any-hover: hover) {
+  :where(a[href^="tel:"]) {
+    pointer-events: none;
+  }
+}
+
+:where(dialog) {
+  width: unset;
+  max-width: unset;
+  height: unset;
+  max-height: unset;
+  padding: unset;
+  color: unset;
+  background-color: unset;
+  border: unset;
+  overflow: unset;
+}
+
+:root:has(dialog[open]) {
+  overflow: hidden;
+}
+
+::backdrop {
+  background-color: unset;
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="reset"]):not([type="submit"]), textarea) {
+  border: 1px solid g.$navy;
+}
+
+:where(body) {
+  min-block-size: 100svh;
+  overflow-x: clip;
+}
+
+html {
+  font-size: 62.5%;
+  color: g.$textColor;
+  font-family: g.$font-family-noto-sans-jp;
+  font-weight: g.$font-family-noto-sans-jp-medium;
+}
+
+dt {
+  font-weight: inherit;
+}
+
+th {
+  font-weight: inherit;
+}
+
+// variables style
+button, a, input, textarea, [tabindex="0"] {
+  &:focus {
+    outline-width: 1px;
+    outline-offset: 1px;
+    outline-color: g.$navy;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+textarea {
+  field-sizing: content;
+  min-height: 4lh;
+}
+
+:where(section) {
+  overflow-x: clip;
+}
+
+ruby {
+  > rt {
+    font-size: g.auto-value(42, 10, "%");
+    text-align: center;
+    letter-spacing: g.text-spacing(20);
+    margin-bottom: 4px;
+  }
+}

@@ -1,0 +1,42 @@
+@use "../global/" as g;
+
+.c- {
+  &table {
+    $table: &;
+
+    &01 {
+      &__wrap {
+        @include g.media(sp) {
+          overflow-x: auto;
+        }
+      }
+      table {
+        width: 100%;
+        // border-radius: 12px 12px 0 0;
+        overflow: hidden;
+        @include g.media(sp) {
+          min-width: 750px;
+        }
+      }
+      tbody {
+        th, td {
+          vertical-align: middle;
+          padding: 24px 32px;
+          background: g.$white;
+          @include g.text01;
+          @include g.media(tab) {
+            padding: 18px 24px;
+          }
+        }
+        th {
+          color: g.$navy;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          border-bottom: 1px solid g.$blueDark;
+        }
+        td {
+          border-bottom: 1px solid g.$graymiddle;
+        }
+      }
+    }
+  }
+}

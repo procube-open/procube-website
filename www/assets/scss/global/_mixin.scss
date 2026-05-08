@@ -1,0 +1,145 @@
+@use "sass:list";
+@use "variables" as var;
+@use "function" as fun;
+
+// マウスのときだけホバースタイルを当てる
+@mixin hover {
+  @media (hover: hover){
+    &:where(:any-link, :enabled, summary):hover {
+      @content;
+    }
+  }
+}
+
+// クリック可能な親要素がホバーされたとき
+@mixin group-hover {
+  @media (hover: hover){
+    &:is(:where(:any-link, :enabled, summary):hover *) {
+      @content;
+    }
+  }
+}
+
+@mixin hover01 {
+  @include transition-set((opacity, var.$transition01));
+  @include hover {
+    opacity: var.$opacity;
+  }
+}
+
+@mixin group-hover01 {
+  @include transition-set((opacity, var.$transition01));
+  @include group-hover {
+    opacity: var.$opacity;
+  }
+}
+
+@mixin position-before-after {
+  content: "";
+  position: absolute;
+}
+
+@mixin position-center-x {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin position-center-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin position-center-xy {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin transition-set($pairs...) {
+  $transitions: ();
+  $will-changes: ();
+
+  @each $pair in $pairs {
+    $property: list.nth($pair, 1);
+    $duration: list.nth($pair, 2);
+    $easing: if(list.length($pair) >= 3, list.nth($pair, 3), null);
+
+    $transition-value: if(
+      $easing != null,
+      #{$property} #{$duration} #{$easing},
+      #{$property} #{$duration}
+    );
+
+    $transitions: list.append($transitions, $transition-value, comma);
+    $will-changes: list.append($will-changes, $property, comma);
+  }
+
+  transition: $transitions;
+  will-change: $will-changes;
+}
+
+@mixin inner01 {
+  max-width: (1320px + var.$space-sp * 2);
+  margin: 0 auto;
+  padding: 0 var.$space-sp;
+}
+
+@mixin inner01-type01 {
+  @include inner01;
+  @include var.media(tab) {
+    max-width: (750px + var.$space-sp * 2);
+  }
+}
+
+@mixin inner02 {
+  max-width: (1100px + var.$space-sp * 2);
+  margin: 0 auto;
+  padding: 0 var.$space-sp;
+}
+
+@mixin inner02-type01 {
+  @include inner02;
+  @include var.media(tab) {
+    max-width: (750px + var.$space-sp * 2);
+  }
+}
+
+
+// component
+@mixin read01 {
+  font-size: 2.8rem;
+  font-weight: var.$font-family-noto-sans-jp-bold;
+  line-height: 1.7;
+  letter-spacing: fun.text-spacing(4);
+  @include var.media(tab) {
+    font-size: 2.2rem;
+  }
+}
+
+@mixin read02 {
+  font-size: 2.2rem;
+  font-weight: var.$font-family-noto-sans-jp-bold;
+  line-height: 1.7;
+  letter-spacing: fun.text-spacing(5);
+  @include var.media(tab) {
+    font-size: 1.7rem;
+  }
+}
+
+@mixin text01 {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  @include var.media(tab) {
+    font-size: 1.5rem;
+  }
+}
+
+@mixin text02 {
+  font-size: 1.6rem;
+  font-weight: var.$font-family-inter-regular;
+  line-height: 1.8;
+  letter-spacing: fun.text-spacing(2);
+  @include var.media(tab) {
+    font-size: 1.5rem;
+  }
+}

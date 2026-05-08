@@ -1,0 +1,11 @@
+@use "variables" as var;
+
+@function text-spacing($base) {
+  $value: calc($base / 100);
+  @return $value + em;
+}
+
+@function auto-value($base, $target, $unit) {
+  $value: calc($target / $base * 100);
+  @return $value + #{$unit};
+}

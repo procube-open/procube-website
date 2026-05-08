@@ -1,0 +1,115 @@
+@use "../global/" as g;
+
+.c- {
+  &list {
+    $list: &;
+
+    &01 {
+      &__item {
+        position: relative;
+        padding-left: 16px;
+        @include g.text01;
+        &::before {
+          top: 9px;
+          left: 0;
+          width: 8px;
+          height: 8px;
+          background: g.$cyan;
+          @include g.position-before-after;
+        }
+        &:not(:last-of-type) {
+          margin-bottom: 6px;
+        }
+      }
+      &__link {
+        color: g.$textLink;
+        border-bottom: 1px solid g.$cyan;
+        @include g.hover01;
+        &[target="_blank"] {
+          padding-right: 22px;
+          background: url(/assets/img/common/icon_target01.svg) no-repeat right 3px center/16px auto;
+        }
+      }
+    }
+
+    // Num
+    &Num01 {
+      counter-reset: list-num01-counter;
+      &__item {
+        counter-increment: list-num01-counter;
+        position: relative;
+        padding-left: 32px;
+        @include g.text01;
+        &:not(:last-of-type) {
+          margin-bottom: 6px;
+        }
+        &::before {
+          content: counter(list-num01-counter, number);
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          color: g.$white;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-semibold;
+          line-height: 1.0;
+          width: 19px;
+          height: 19px;
+          border-radius: 50%;
+          background: g.$blue;
+          @include g.media(tab) {
+            top: 3px;
+          }
+        }
+      }
+    }
+
+    &Num02 {
+      counter-reset: list-num02-counter;
+      &__item {
+        counter-increment: list-num02-counter;
+        &:not(:last-of-type) {
+          margin-bottom: 24px;
+        }
+      }
+      &__title {
+        position: relative;
+        font-size: 2.0rem;
+        color: g.$navy;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        padding-left: 34px;
+        &::before {
+          content: counter(list-num02-counter, number);
+          position: absolute;
+          top: 5px;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          color: g.$white;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-semibold;
+          line-height: 1.0;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: g.$blue;
+        }
+        @include g.media(tab) {
+          font-size: 1.8rem;
+          &::before {
+            top: 3px;
+          }
+        }
+      }
+      &__detail {
+        margin-top: 6px;
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@use "../global/" as g;
+
+.u- {
+  &d {
+    // 表示のパターン設定
+    $display-group: block, inline-block, inline, none;
+
+    // 基本スタイル出力
+    @each $value in $display-group {
+      &--#{$value} {
+        display: $value !important;
+      }
+    }
+
+    // 画面幅ごとのスタイル出力
+    &--pc {
+      &Block {
+        display: block !important;
+        @include g.media(tab) {
+          display: none !important;
+        }
+      }
+      &None {
+        display: none !important;
+        @include g.media(tab) {
+          display: block !important;
+        }
+      }
+    }
+    &--tab {
+      &Block {
+        display: none !important;
+        @include g.media(tab) {
+          display: block !important;
+        }
+        @include g.media(sp) {
+          display: none !important;
+        }
+      }
+      &None {
+        display: block !important;
+        @include g.media(tab) {
+          display: none !important;
+        }
+        @include g.media(sp) {
+          display: block !important;
+        }
+      }
+    }
+    &--sp {
+      &Block {
+        display: none !important;
+        @include g.media(sp) {
+          display: block !important;
+        }
+      }
+      &None {
+        display: block !important;
+        @include g.media(sp) {
+          display: none !important;
+        }
+      }
+    }
+    &--pctab {
+      &Block {
+        display: block !important;
+        @include g.media(sp) {
+          display: none !important;
+        }
+      }
+      &None {
+        display: none !important;
+        @include g.media(sp) {
+          display: block !important;
+        }
+      }
+    }
+    &--tabsp {
+      &Block {
+        display: none !important;
+        @include g.media(tab) {
+          display: block !important;
+        }
+      }
+      &None {
+        display: block !important;
+        @include g.media(tab) {
+          display: none !important;
+        }
+      }
+    }
+  }
+}

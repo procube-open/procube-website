@@ -1,0 +1,219 @@
+@use "../global/" as g;
+
+.c- {
+  &title {
+    $title: &;
+
+    &01 {
+      &__main {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 10px;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(2);
+        &Accent01 {
+          font-size: 7.0rem;
+          color: g.$blueDark;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          @include g.media(tab) {
+            font-size: 6.4rem;
+          }
+        }
+        &Accent02 {
+          font-size: 5.0rem;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-regular;
+          @include g.media(tab) {
+            font-size: 4.0rem;
+          }
+        }
+      }
+      &__sub {
+        display: block;
+        @include g.media(tab) {
+          margin-top: 8px;
+        }
+        &Text {
+          display: inline-block;
+          font-size: 1.8rem;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+          line-height: 1.7;
+          letter-spacing: g.text-spacing(5);
+          padding-left: 33px;
+          background: url(/assets/img/common/icon_cube01-black.svg) no-repeat left center/26px auto;
+          @include g.media(tab) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+
+    &02 {
+      margin-bottom: 40px;
+      @include g.media(tab) {
+        margin-bottom: 28px;
+      }
+      &[data-position="center"] {
+        text-align: center;
+        #{$title}02__read {
+          background-position: center bottom;
+        }
+      }
+      &[data-space="large"] {
+        margin-bottom: 80px;
+        @include g.media(tab) {
+          margin-bottom: 48px;
+        }
+      }
+      &[data-space="extraLarge"] {
+        margin-bottom: 100px;
+        @include g.media(tab) {
+          margin-bottom: 56px;
+        }
+      }
+      &--type01 {
+        @extend #{$title}02;
+        display: flex;
+        flex-direction: column-reverse;
+        #{$title}02__read {
+          padding-top: 14px;
+          padding-bottom: 0;
+          margin-top: 16px;
+          margin-bottom: 0;
+          background-position: left top;
+          @include g.media(tab) {
+            padding-top: 10px;
+            margin-top: 12px;
+          }
+        }
+        &[data-position="center"] {
+          #{$title}02__read {
+            background-position: center top;
+          }
+        }
+      }
+      &__read {
+        display: block;
+        font-size: 1.6rem;
+        font-family: g.$font-family-inter;
+        font-weight: g.$font-family-inter-bold;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(2);
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+        background-image: url(/assets/img/common/icon_dot01.svg);
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: auto 6px;
+        @include g.media(tab) {
+          font-size: 1.4rem;
+          padding-bottom: 10px;
+          margin-bottom: 12px;
+          background-size: auto 4px;
+        }
+        &Accent {
+          font-size: 1.5rem;
+          font-family: g.$font-family-orbitron;
+          font-weight: g.$font-family-orbitron-bold;
+          @include g.media(tab) {
+            font-size: 1.3rem;
+          }
+        }
+
+        &[data-language="japanese"] {
+          font-size: 1.8rem;
+          font-family: g.$font-family-noto-sans-jp;
+          font-weight: g.$font-family-noto-sans-jp-bold;
+        }
+      }
+      &__text {
+        display: block;
+        font-size: 4.2rem;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.3;
+        letter-spacing: g.text-spacing(8);
+        @include g.media(tab) {
+          font-size: 3.0rem;
+        }
+        &[data-language="english"] {
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+        }
+      }
+    }
+
+    &03 {
+      position: relative;
+      font-size: 2.8rem;
+      font-weight: g.$font-family-noto-sans-jp-bold;
+      line-height: 1.7;
+      letter-spacing: g.text-spacing(4);
+      padding-bottom: 14px;
+      margin-bottom: 32px;
+      &::before {
+        left: 0;
+        bottom: 0;
+        width: 16px;
+        height: 6px;
+        background: g.$cyan;
+        @include g.position-before-after;
+      }
+      @include g.media(tab) {
+        font-size: 2.2rem;
+        padding-bottom: 10px;
+        margin-bottom: 24px;
+        &::before {
+          width: 12px;
+          height: 4px;
+        }
+      }
+      &[data-position="center"] {
+        text-align: center;
+        &::before {
+          @include g.position-center-x;
+        }
+      }
+      &[data-space="middle"] {
+        margin-bottom: 26px;
+        @include g.media(tab) {
+          margin-bottom: 20px;
+        }
+      }
+      &[data-space="small"] {
+        margin-bottom: 16px;
+        @include g.media(tab) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+    &04 {
+      font-size: 4.2rem;
+      font-weight: g.$font-family-noto-sans-jp-bold;
+      line-height: 1.3;
+      letter-spacing: g.text-spacing(8);
+      padding-bottom: 22px;
+      margin-bottom: 40px;
+      background-image: url(/assets/img/common/icon_dot01.svg);
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      background-size: auto 6px;
+      @include g.media(tab) {
+        font-size: 3.2rem;
+        padding-bottom: 16px;
+        margin-bottom: 28px;
+        background-size: auto 4px;
+      }
+      &[data-position="center"] {
+        text-align: center;
+        background-position: center bottom;
+      }
+      &[data-text="english"] {
+        font-family: g.$font-family-inter;
+        font-weight: g.$font-family-inter-bold;
+      }
+    }
+  }
+}

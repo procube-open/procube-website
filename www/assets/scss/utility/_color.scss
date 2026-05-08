@@ -1,0 +1,21 @@
+@use "../global/" as g;
+
+.u- {
+  // color：スタイル出力
+  @each $class, $value in g.$utility-color {
+    &text {
+      &--#{$class} {
+        color: $value !important;
+      }
+    }
+  }
+
+  // background-color：スタイル出力
+  @each $class, $value in g.$utility-color {
+    &bg {
+      &--#{$class} {
+        background-color: $value !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use "../global/" as g;
+
+.c- {
+  &read {
+    $read: &;
+
+    &01 {
+      margin-bottom: 32px;
+      @include g.read01;
+      @include g.media(tab) {
+        margin-bottom: 24px;
+      }
+      &[data-position="center"] {
+        text-align: center;
+      }
+      &[data-space="small"] {
+        margin-bottom: 24px;
+        @include g.media(tab) {
+          margin-bottom: 18px;
+        }
+      }
+      &[data-space="large"] {
+        margin-bottom: 40px;
+        @include g.media(tab) {
+          margin-bottom: 28px;
+        }
+      }
+    }
+
+    &02 {
+      margin-bottom: 24px;
+      @include g.read02;
+      @include g.media(tab) {
+        margin-bottom: 18px;
+      }
+      &[data-position="center"] {
+        text-align: center;
+      }
+    }
+  }
+}

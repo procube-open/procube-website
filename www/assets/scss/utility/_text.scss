@@ -1,0 +1,39 @@
+@use "../global/" as g;
+
+.u- {
+  &text {
+    // text-align：パターン設定
+    $align-group: (
+      Left: left,
+      Center: center,
+      Right: right,
+    );
+
+    // text-align：スタイル出力
+    @each $class, $value in $align-group {
+      &--align#{$class} {
+        text-align: $value !important;
+      }
+      &--alignPc#{$class} {
+        @include g.media(pc-only) {
+          text-align: $value !important;
+        }
+      }
+      &--alignPcTab#{$class} {
+        @include g.media(pc-tab) {
+          text-align: $value !important;
+        }
+      }
+      &--alignTab#{$class} {
+        @include g.media(tab-only) {
+          text-align: $value !important;
+        }
+      }
+      &--alignSp#{$class} {
+        @include g.media(sp) {
+          text-align: $value !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@use "../global/" as g;
+
+.c- {
+  &faq {
+    $faq: &;
+
+    &01 {
+      &__item {
+        padding: 16px 0 24px;
+        border-bottom: 1px solid g.$graymiddle;
+        @include g.media(tab) {
+          padding: 12px 0 18px;
+        }
+      }
+      &__title {
+        position: relative;
+        font-size: 2.0rem;
+        color: g.$navy;
+        font-weight: g.$font-family-noto-sans-jp-bold;
+        line-height: 1.7;
+        padding: 8.5px 0 8.5px 42px;
+        @include g.media(tab) {
+          font-size: 1.8rem;
+          padding: 4px 0 4px 33px;
+        }
+        &::before {
+          content: "Q.";
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 3.0rem;
+          color: g.$blue;
+          font-family: g.$font-family-inter;
+          font-weight: g.$font-family-inter-bold;
+          line-height: 1.7;
+          @include g.media(tab) {
+            font-size: 2.4rem;
+          }
+        }
+      }
+    }
+  }
+}

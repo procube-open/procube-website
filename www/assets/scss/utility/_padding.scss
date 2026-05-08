@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "../global/" as g;
+
+.u- {
+  // 余白の定義
+  $padding-space: (
+    ss: ( pc-space: 8px, sp-space: 6px ),
+    s: ( pc-space: 16px, sp-space: 12px ),
+    m: ( pc-space: 24px, sp-space: 18px ),
+    l: ( pc-space: 32px, sp-space: 24px ),
+    ll: ( pc-space: 40px, sp-space: 28px ),
+    3l: ( pc-space: 50px, sp-space: 32px ),
+    4l: ( pc-space: 60px, sp-space: 36px ),
+    5l: ( pc-space: 80px, sp-space: 48px ),
+    6l: ( pc-space: 100px, sp-space: 56px ),
+  );
+
+  // 余白のパターン設定
+  $padding-group: (
+    t: top,
+    r: right,
+    b: bottom,
+    l: left,
+  );
+
+  // スタイルの定義
+  @each $dir-key, $dir-name in $padding-group {
+    @each $size-key, $space-map in $padding-space {
+      &p#{$dir-key}--#{$size-key} {
+        padding-#{$dir-name}: map.get($space-map, "pc-space") !important;
+        @include g.media(tab) {
+          padding-#{$dir-name}: map.get($space-map, "sp-space") !important;
+        }
+      }
+    }
+
+    &p#{$dir-key}--none {
+      padding-#{$dir-name}: 0 !important;
+    }
+  }
+}
