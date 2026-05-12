@@ -15,7 +15,7 @@ sudo tee /etc/apache2/sites-available/preview.conf > /dev/null << EOF
     DocumentRoot ${WWW_DIR}
     <Directory ${WWW_DIR}>
         Options Indexes FollowSymLinks
-        AllowOverride All
+        AllowOverride None
         Require all granted
     </Directory>
 </VirtualHost>
@@ -23,6 +23,6 @@ EOF
 
 sudo a2dissite 000-default 2>/dev/null || true
 sudo a2ensite preview
-sudo apachectl restart
+sudo apachectl -k graceful || sudo apachectl -k start
 
 echo "Preview server started at http://localhost:8080"
