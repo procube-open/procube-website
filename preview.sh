@@ -14,7 +14,9 @@ sudo tee /etc/apache2/sites-available/preview.conf > /dev/null << EOF
 <VirtualHost *:8080>
     DocumentRoot ${WWW_DIR}
     <Directory ${WWW_DIR}>
-        Options Indexes FollowSymLinks
+        Options Indexes FollowSymLinks Includes
+        AddType text/html .html
+        AddHandler server-parsed html
         AllowOverride None
         Require all granted
     </Directory>
@@ -22,6 +24,7 @@ sudo tee /etc/apache2/sites-available/preview.conf > /dev/null << EOF
 EOF
 
 sudo a2dissite 000-default 2>/dev/null || true
+sudo a2enmod include
 sudo a2ensite preview
 sudo apachectl -k graceful || sudo apachectl -k start
 
