@@ -18,13 +18,26 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s' "${{ secrets.SSH_PRIVATE_KEY_B64 }}" | base64 --decode > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          SSH_PORT="${{ secrets.SSH_SERVER_PORT }}"
+          if [ -z "$SSH_PORT" ]; then
+            SSH_PORT=22
+          fi
+
+          # Prefer statically pinned entries from secrets, then append fresh scan results.
           printf '%s\n' "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          ssh-keyscan -p "$SSH_PORT" -H -t rsa,ecdsa,ed25519 "${{ secrets.SSH_SERVER_FQDN }}" >> ~/.ssh/known_hosts
+          sort -u ~/.ssh/known_hosts -o ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - name: Sync www/ to server
         run: |
+          SSH_PORT="${{ secrets.SSH_SERVER_PORT }}"
+          if [ -z "$SSH_PORT" ]; then
+            SSH_PORT=22
+          fi
+
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_rsa" \
+            -e "ssh -i ~/.ssh/id_rsa -p $SSH_PORT -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts" \
             www/ \
             "${{ secrets.SSH_SERVER_ACCOUNT }}@${{ secrets.SSH_SERVER_FQDN }}:~/www/"
 
