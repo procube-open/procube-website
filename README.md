@@ -7,8 +7,7 @@
 
 ## レンタルサーバの仕様
 
-Webサーバー: Apache/2.4.65
-sshサーバ: GitHub Actions の環境変数 SSH_SERVER_FQDN に保持
-sshサーバアカウント: GitHub Actions の環境変数 SSH_SERVER_ACCOUNT に保持
-ssh秘密鍵: GitHub Actions の環境変数 SSH_PRIVATE_KEY_B64 にパスフレーズなしの PEM形式のデータを base64 エンコードした値を保持
-
+- **Webサーバー:** Apache/2.4.65
+- **sshサーバ:** GitHub Actions の Secrets.SSH_SERVER_FQDN に保持
+- **sshサーバアカウント:** GitHub Actions の Secrets.SSH_SERVER_ACCOUNT に保持
+- **ssh秘密鍵:** GitHub Actions の Secrets.SSH_PRIVATE_KEY_B64 にパスフレーズなしの PEM形式のデータを base64 エンコードした値を保持
