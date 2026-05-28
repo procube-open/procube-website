@@ -92,10 +92,10 @@
                     </ul>
                   </div>
                   <div class="p-contactSign__detail">
-                    <p class="p-contactSign__text">下記のフォームに必要事項をご記入のうえ、「確認」ボタンを押してください。<br>お問い合わせ頂きました内容を確認後、担当よりご連絡させて頂きます。</p>
+                    <p class="p-contactSign__text">下記のフォームに必要事項をご記入のうえ、「入力内容を確認する」ボタンを押してください。<br>お問い合わせ頂きました内容を確認後、担当よりご連絡させて頂きます。</p>
                   </div>
                 </div>
-                <form class="p-contactForm" action="">
+                <form class="p-contactForm" action="contact.py">
                   <table class="p-contactFormTable">
                     <colgroup>
                       <col style="width: 29.09%;">
@@ -111,19 +111,19 @@
                             <ul class="c-formRadio01__list">
                               <li class="c-formRadio01__item">
                                 <label class="c-formRadio01__label">
-                                  <input type="radio" class="c-formRadio01__input" name="お問い合わせの項目" value="製品について">
+                                  <input type="radio" class="c-formRadio01__input" name="kind" value="製品について">
                                   <span class="c-formRadio01__text">製品について</span>
                                 </label>
                               </li>
                               <li class="c-formRadio01__item">
                                 <label class="c-formRadio01__label">
-                                  <input type="radio" class="c-formRadio01__input" name="お問い合わせの項目" value="採用について">
+                                  <input type="radio" class="c-formRadio01__input" name="kind" value="採用について">
                                   <span class="c-formRadio01__text">採用について</span>
                                 </label>
                               </li>
                               <li class="c-formRadio01__item">
                                 <label class="c-formRadio01__label">
-                                  <input type="radio" class="c-formRadio01__input" name="お問い合わせの項目" value="その他">
+                                  <input type="radio" class="c-formRadio01__input" name="kind" value="その他">
                                   <span class="c-formRadio01__text">その他</span>
                                 </label>
                               </li>
@@ -137,7 +137,7 @@
                         </th>
                         <td>
                           <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="640" data-alert="off" placeholder="例：株式会社プロキューブ">
+                            <input type="text" name="company" class="c-formText01__input" data-width="640" data-alert="off" placeholder="例：株式会社プロキューブ" required>
                           </div>
                         </td>
                       </tr>
@@ -147,7 +147,7 @@
                         </th>
                         <td>
                           <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="308" data-alert="off" placeholder="例：山田　太郎">
+                            <input type="text" name="name" class="c-formText01__input" data-width="308" data-alert="off" placeholder="例：山田　太郎" required>
                           </div>
                         </td>
                       </tr>
@@ -157,18 +157,7 @@
                         </th>
                         <td>
                           <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="308" data-alert="off" placeholder="例：078-393-1334">
-                            <span class="c-formText01__note">（半角数字）</span>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <p class="p-contactForm__label">FAX番号</p>
-                        </th>
-                        <td>
-                          <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="308" data-alert="off" placeholder="例：078-393-1334">
+                            <input type="text" name="tel" class="c-formText01__input" data-width="308" data-alert="off" placeholder="例：078-393-1334" required>
                             <span class="c-formText01__note">（半角数字）</span>
                           </div>
                         </td>
@@ -179,7 +168,7 @@
                         </th>
                         <td>
                           <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="536" data-alert="off" placeholder="例：test@example.co.jp">
+                            <input type="text" name="email" class="c-formText01__input" data-width="536" data-alert="off" placeholder="例：test@example.co.jp" required>
                             <span class="c-formText01__note">（半角数字）</span>
                           </div>
                         </td>
@@ -190,7 +179,7 @@
                         </th>
                         <td>
                           <div class="c-formText01">
-                            <input type="text" class="c-formText01__input" data-width="536" data-alert="off" placeholder="例：test@example.co.jp">
+                            <input type="text" name="email2" class="c-formText01__input" data-width="536" data-alert="off" placeholder="例：test@example.co.jp" required>
                             <span class="c-formText01__note">（半角数字）</span>
                           </div>
                         </td>
@@ -201,7 +190,7 @@
                         </th>
                         <td>
                           <div class="c-formSentence01">
-                            <textarea name="ご質問・ご相談内容" id="inquiry01" class="c-formSentence01__textarea" data-width="640" data-alert="off" placeholder="ご質問・ご相談内容を入力してください"></textarea>
+                            <textarea name="comment" id="inquiry01" class="c-formSentence01__textarea" data-width="640" data-alert="off" placeholder="ご質問・ご相談内容を入力してください" required></textarea>
                           </div>
                         </td>
                       </tr>
@@ -225,8 +214,57 @@
       </div>
       <!-- /.l-main__inner -->
     </main>
+    
     <!-- /.l-main -->
     <!--#include virtual="/assets/inc/footer.html" -->
     <!--#include virtual="/assets/inc/footer-js.html" -->
+
+    <script>
+$(function() {
+  const $form = $('.p-contactForm');
+  $form.on('submit', function(event) {
+    let errors = [];
+
+    // 1. お問い合わせの項目（ラジオボタン）
+    if (!$('input[name="kind"]:checked').val()) {
+      errors.push("「お問い合わせの項目」を選択してください。");
+    }
+
+    // 2. テキスト入力・テキストエリアの必須チェック
+    // 判定対象：御社名, 氏名, 電話番号, メールアドレス, メールアドレス確認, 内容
+    const requiredFields = [
+      { name: 'company', label: '御社名' },
+      { name: 'name',    label: '氏名' },
+      { name: 'tel',     label: '電話番号' },
+      { name: 'email',   label: 'メールアドレス' },
+      { name: 'email2',  label: 'メールアドレス（確認用）' },
+      { name: 'comment', label: 'ご質問・ご相談内容' }
+    ];
+
+    $.each(requiredFields, function(index, field) {
+      const $input = $(`[name="${field.name}"]`);
+      // trim()で空白のみの入力もエラーにする
+      if ($.trim($input.val()) === "") {
+        errors.push(`「${field.label}」を入力してください。`);
+      }
+    });
+
+    // 3. メールアドレスの一致チェック
+    const email = $('input[name="email"]').val();
+    const email2 = $('input[name="email2"]').val();
+
+    if (email && email2 && email !== email2) {
+      errors.push("メールアドレスが一致しません。再度ご確認ください。");
+    }
+
+    // エラーがある場合はアラートを表示して送信を中止
+    if (errors.length > 0) {
+      event.preventDefault();
+      alert(errors.join('\n'));
+    }
+  });
+});
+    </script>
+
   </body>
 </html>
